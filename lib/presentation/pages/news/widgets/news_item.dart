@@ -1,0 +1,151 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:qasid/main.dart';
+
+import '../../../../core/app_theme/app_theme.dart';
+import '../../news_detail/news_detail_page.dart';
+
+class NewsItem extends StatelessWidget {
+  const NewsItem({
+    Key? key,
+    required this.news,
+    required this.constraints,
+  }) : super(key: key);
+
+  final News news;
+  final BoxConstraints constraints;
+
+  @override
+  Widget build(BuildContext context) {
+    final appTheme = AppTheme.of(context);
+
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                news.title ?? '',
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.w700,
+                ),
+                maxLines: 3,
+                overflow: TextOverflow.ellipsis,
+                textAlign: TextAlign.center,
+              ),
+              if (news.description != null) const SizedBox(height: 5.0),
+              Divider(
+                thickness: .5,
+                indent: 20,
+                endIndent: 20,
+                color: Colors.black,
+              ),
+              if (news.description != null)
+                Text(
+                  news.description ?? '',
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 16.0,
+                    fontStyle: FontStyle.italic,
+                  ),
+                  maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
+                  textAlign: TextAlign.center,
+                ),
+            ],
+          ),
+        ),
+        Expanded(
+          child: SizedBox(
+            width: constraints.maxWidth * 0.9,
+            child: Stack(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(8.0),
+                  child: FadeInImage.assetNetwork(
+                    placeholder: 'asssets/image.png',
+                    width: constraints.maxWidth,
+                    height: constraints.maxHeight,
+                    fit: BoxFit.cover,
+                    image: news.url ?? '',
+                  ),
+                ),
+                Positioned.fill(
+                  child: SizedBox(
+                    width: double.infinity,
+                    height: double.infinity,
+                    child: Material(
+                      borderRadius: BorderRadius.circular(8.0),
+                      color: Colors.black12,
+                      child: InkWell(
+                        borderRadius: BorderRadius.circular(8.0),
+                        splashColor: Colors.black26,
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (_) {
+                                return const NewsDetailPage(
+                                  url:
+                                      'https://apa.az/az/mdb-olkeleri/peskov-biz-amansiz-informasiya-saxtakarliq-muharibesinde-yasayiriq-693893',
+                                );
+                              },
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.topRight,
+                  child: Container(
+                    height: 40,
+                    width: 40,
+                    margin: const EdgeInsets.all(16.0),
+                    decoration: BoxDecoration(
+                      color: appTheme.colors.primaryColor,
+                      shape: BoxShape.circle,
+                    ),
+                    child: Material(
+                      borderRadius: BorderRadius.circular(20),
+                      child: InkWell(
+                        onTap: () {},
+                        borderRadius: BorderRadius.circular(20),
+                        child: const Center(
+                          child: Icon(
+                            CupertinoIcons.bookmark,
+                            size: 20,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        if (news.source != null)
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              news.source ?? '',
+              style: const TextStyle(
+                color: Colors.black,
+                fontSize: 16.0,
+                fontWeight: FontWeight.w500,
+                fontStyle: FontStyle.italic,
+              ),
+              maxLines: 3,
+              overflow: TextOverflow.ellipsis,
+              textAlign: TextAlign.center,
+            ),
+          ),
+      ],
+    );
+  }
+}

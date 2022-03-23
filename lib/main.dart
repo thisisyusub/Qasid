@@ -1,8 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'package:webfeed/webfeed.dart';
+import 'package:xml/xml.dart';
 
 import 'core/app_theme/app_theme.dart';
 import 'injection_container.dart' as di;
 import 'presentation/pages/main/main_page.dart';
+
+class News {
+  String? source;
+  String? title;
+  String? url;
+  String? description;
+}
+
+final newsList = <News>[];
 
 extension WebFeedIterable<T> on Iterable<T> {
   T? get firstOrNull => isEmpty ? null : first;
@@ -12,22 +24,40 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await di.init();
 
-  // final result = await http
-  //     .get(Uri.parse('https://medium.com/feed/tag/software-engineering'));
+  final result = await http.get(Uri.parse('https://technote.az/feed'));
 
-  // final document = XmlDocument.parse(result.body);
+  final document = XmlDocument.parse(result.body);
 
-  // var rss = document.findElements('rss').firstOrNull;
-  // var rdf = document.findElements('rdf:RDF').firstOrNull;
-  // var feedElement = document.findElements('feed').firstOrNull;
+  var rss = document.findElements('rss').firstOrNull;
+  var rdf = document.findElements('rdf:RDF').firstOrNull;
+  var feedElement = document.findElements('feed').firstOrNull;
 
-  // var feed;
+  var feed;
 
-  // if (rss != null || rdf != null) {
-  //   feed = RssFeed.parse(result.body);
-  // } else if (feedElement != null) {
-  //   feed = AtomFeed.parse(result.body);
-  // }
+  if (rss != null || rdf != null) {
+    feed = RssFeed.parse(result.body);
+  } else if (feedElement != null) {
+    feed = AtomFeed.parse(result.body);
+  }
+
+  if (feed is RssFeed) {
+    print('RSS');
+
+    if (feed.items != null) {
+      for (var item in feed.items!) {
+        final news = News();
+
+        news.title = item.title;
+        news.url = item.enclosure?.url;
+        news.description = item.description;
+        news.source = feed.title;
+
+        newsList.add(news);
+      }
+    }
+  } else if (feed is AtomFeed) {
+    print('Atom');
+  }
 
   // if (feed is RssFeed) {
   //   print('*** RSS ***\n');

@@ -35,8 +35,8 @@ class _NewsBottomNavBarState extends State<NewsBottomNavBar> {
       items: [
         _buildBottomNavyBarItem(
           appTheme: appTheme,
-          title: 'Home',
-          icon: CupertinoIcons.home,
+          title: 'News',
+          icon: CupertinoIcons.news,
           isCurrent: _index == 0,
         ),
         _buildBottomNavyBarItem(

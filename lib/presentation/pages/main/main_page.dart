@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../news/news_page.dart';
-import '../news_detail/news_detail_page.dart';
 import 'widgets/news_bottom_nav_bar.dart';
 
 class MainPage extends StatefulWidget {
@@ -23,7 +22,8 @@ class _MainPageState extends State<MainPage> {
         physics: const NeverScrollableScrollPhysics(),
         children: [
           const NewsPage(),
-          const NewsDetailPage(),
+          const Scaffold(),
+          const Scaffold(),
         ],
       ),
       bottomNavigationBar: NewsBottomNavBar(
@@ -31,7 +31,7 @@ class _MainPageState extends State<MainPage> {
           _pageController.animateToPage(
             index,
             duration: const Duration(milliseconds: 800),
-            curve: Curves.easeOutCubic,
+            curve: Curves.elasticOut,
           );
         },
       ),
