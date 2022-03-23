@@ -33,18 +33,18 @@ class NewsItem extends StatelessWidget {
                   fontSize: 16.0,
                   fontWeight: FontWeight.w700,
                 ),
-                maxLines: 3,
-                overflow: TextOverflow.ellipsis,
                 textAlign: TextAlign.center,
               ),
-              if (news.description != null) const SizedBox(height: 5.0),
-              Divider(
-                thickness: .5,
-                indent: 20,
-                endIndent: 20,
-                color: Colors.black,
-              ),
-              if (news.description != null)
+              if (news.description != null && news.description!.isNotEmpty)
+                const SizedBox(height: 5.0),
+              if (news.description != null && news.description!.isNotEmpty)
+                const Divider(
+                  thickness: .5,
+                  indent: 20,
+                  endIndent: 20,
+                  color: Colors.grey,
+                ),
+              if (news.description != null && news.description!.isNotEmpty)
                 Text(
                   news.description ?? '',
                   style: const TextStyle(

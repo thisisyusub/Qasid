@@ -49,7 +49,7 @@ void main() async {
 
         news.title = item.title;
         news.url = item.enclosure?.url;
-        news.description = item.description;
+        news.description = item.description?.trim();
         news.source = feed.title;
 
         newsList.add(news);
