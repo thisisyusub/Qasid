@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:qasid/main.dart';
+import 'package:theme/theme.dart';
 
-import '../../../core/app_theme/app_theme.dart';
+import '../../../main.dart';
 import 'widgets/news_item.dart';
 
 class NewsPage extends StatelessWidget {

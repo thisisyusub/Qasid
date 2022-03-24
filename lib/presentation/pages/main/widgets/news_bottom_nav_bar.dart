@@ -1,8 +1,7 @@
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../core/app_theme/app_theme.dart';
+import 'package:theme/theme.dart';
 
 class NewsBottomNavBar extends StatefulWidget {
   const NewsBottomNavBar({

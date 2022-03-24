@@ -68,7 +68,6 @@ class _NewsDetailPageState extends State<NewsDetailPage> {
               initialUrl: widget.url,
               javascriptMode: JavascriptMode.unrestricted,
               onWebViewCreated: (controller) {
-                print('created...');
                 setState(() {
                   _controller = controller;
                 });

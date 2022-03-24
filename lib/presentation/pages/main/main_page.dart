@@ -20,10 +20,10 @@ class _MainPageState extends State<MainPage> {
         controller: _pageController,
         allowImplicitScrolling: false,
         physics: const NeverScrollableScrollPhysics(),
-        children: [
-          const NewsPage(),
-          const Scaffold(),
-          const Scaffold(),
+        children: const [
+          NewsPage(),
+          Scaffold(),
+          Scaffold(),
         ],
       ),
       bottomNavigationBar: NewsBottomNavBar(
