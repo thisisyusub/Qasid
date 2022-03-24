@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:qasid/presentation/pages/source_selection/source_selection_page.dart';
 import 'package:webfeed/webfeed.dart';
 import 'package:xml/xml.dart';
 
@@ -105,7 +106,7 @@ class MyApp extends StatelessWidget {
             primaryColor: appTheme.colors.primaryColor,
             primaryColorDark: appTheme.colors.secondaryColor,
           ),
-          home: const MainPage(),
+          home: const SourceSelectionPage(),
         );
       }),
     );
