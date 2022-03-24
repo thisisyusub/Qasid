@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:theme/theme.dart';
 
 import '../../bloc/news_source/news_source_cubit.dart';
 import '../main/main_page.dart';
@@ -12,6 +13,8 @@ class SourceSelectionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final localization = AppLocalizations.of(context)!;
+    final appTheme = AppTheme.of(context);
+
     final sourceCubit = context.watch<NewsSourceCubit>();
     final newsSources = sourceCubit.state;
 
@@ -25,7 +28,9 @@ class SourceSelectionPage extends StatelessWidget {
                 SizedBox(height: constraints.maxHeight * 0.1),
                 Text(
                   localization.selectSoureTitle,
-                  style: Theme.of(context).textTheme.headline6,
+                  style: appTheme.typography.heading.copyWith(
+                    color: appTheme.colors.secondaryColor,
+                  ),
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 30),
@@ -37,22 +42,22 @@ class SourceSelectionPage extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: Row(
                           children: [
-                            const Spacer(),
                             Expanded(
+                              flex: 2,
                               child: Text(
                                 newsSources[i].value.title,
-                                style: Theme.of(context).textTheme.titleMedium,
+                                style: appTheme.typography.title.copyWith(
+                                  color: appTheme.colors.secondaryColor,
+                                ),
                               ),
                             ),
-                            const Spacer(),
                             CupertinoSwitch(
                               value: newsSources[i].selected,
-                              activeColor: Colors.black,
+                              activeColor: appTheme.colors.secondaryColor,
                               onChanged: (_) {
                                 sourceCubit.changeSelection(i);
                               },
                             ),
-                            const Spacer(),
                           ],
                         ),
                       );
@@ -77,7 +82,12 @@ class SourceSelectionPage extends StatelessWidget {
                     child: Text(localization.goForward),
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(
-                        Colors.black,
+                        appTheme.colors.secondaryColor,
+                      ),
+                      textStyle: MaterialStateProperty.all(
+                        appTheme.typography.title.copyWith(
+                          color: appTheme.colors.secondaryColor,
+                        ),
                       ),
                       fixedSize: MaterialStateProperty.all(
                         const Size(200.0, 50.0),

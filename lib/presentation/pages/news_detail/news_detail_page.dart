@@ -43,14 +43,15 @@ class _NewsDetailPageState extends State<NewsDetailPage> {
         ),
         elevation: 0,
         actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              CupertinoIcons.bookmark,
-              color: Colors.black,
-              size: 20,
+          if (false)
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                CupertinoIcons.bookmark,
+                color: Colors.black,
+                size: 20,
+              ),
             ),
-          ),
           IconButton(
             onPressed: () {},
             icon: const Icon(
@@ -110,11 +111,5 @@ class _NewsDetailPageState extends State<NewsDetailPage> {
         ),
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    _controller?.clearCache();
-    super.dispose();
   }
 }

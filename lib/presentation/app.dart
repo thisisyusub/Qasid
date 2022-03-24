@@ -4,6 +4,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:responsiveness/responsiveness.dart';
 import 'package:theme/theme.dart';
 
+import '../core/utils/app_scroll_behaviour.dart';
 import '../injection_container.dart';
 import 'bloc/auth/auth_cubit.dart';
 import 'pages/auth/auth_page.dart';
@@ -40,6 +41,12 @@ class MyApp extends StatelessWidget {
                         primaryColor: appTheme.colors.primaryColor,
                         primaryColorDark: appTheme.colors.secondaryColor,
                       ),
+                      builder: (context, child) {
+                        return ScrollConfiguration(
+                          behavior: AppScrollBehaviour(),
+                          child: child!,
+                        );
+                      },
                       home: const AuthPage(),
                     );
                   },

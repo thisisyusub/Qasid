@@ -67,7 +67,7 @@ class NewsItem extends StatelessWidget {
                 ClipRRect(
                   borderRadius: BorderRadius.circular(8.0),
                   child: FadeInImage.assetNetwork(
-                    placeholder: 'asssets/image.png',
+                    placeholder: 'assets/placeholder_logo.png',
                     width: constraints.maxWidth,
                     height: constraints.maxHeight,
                     fit: BoxFit.cover,
@@ -100,31 +100,32 @@ class NewsItem extends StatelessWidget {
                     ),
                   ),
                 ),
-                Align(
-                  alignment: Alignment.topRight,
-                  child: Container(
-                    height: 40,
-                    width: 40,
-                    margin: const EdgeInsets.all(16.0),
-                    decoration: BoxDecoration(
-                      color: appTheme.colors.primaryColor,
-                      shape: BoxShape.circle,
-                    ),
-                    child: Material(
-                      borderRadius: BorderRadius.circular(20),
-                      child: InkWell(
-                        onTap: () {},
+                if (false)
+                  Align(
+                    alignment: Alignment.topRight,
+                    child: Container(
+                      height: 40,
+                      width: 40,
+                      margin: const EdgeInsets.all(16.0),
+                      decoration: BoxDecoration(
+                        color: appTheme.colors.primaryColor,
+                        shape: BoxShape.circle,
+                      ),
+                      child: Material(
                         borderRadius: BorderRadius.circular(20),
-                        child: const Center(
-                          child: Icon(
-                            CupertinoIcons.bookmark,
-                            size: 20,
+                        child: InkWell(
+                          onTap: () {},
+                          borderRadius: BorderRadius.circular(20),
+                          child: const Center(
+                            child: Icon(
+                              CupertinoIcons.bookmark,
+                              size: 20,
+                            ),
                           ),
                         ),
                       ),
                     ),
                   ),
-                ),
               ],
             ),
           ),

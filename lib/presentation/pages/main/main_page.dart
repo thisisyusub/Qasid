@@ -23,15 +23,14 @@ class _MainPageState extends State<MainPage> {
         children: const [
           NewsPage(),
           Scaffold(),
-          Scaffold(),
         ],
       ),
       bottomNavigationBar: NewsBottomNavBar(
         onChange: (index) {
           _pageController.animateToPage(
             index,
-            duration: const Duration(milliseconds: 800),
-            curve: Curves.elasticOut,
+            duration: const Duration(milliseconds: 700),
+            curve: Curves.fastOutSlowIn,
           );
         },
       ),

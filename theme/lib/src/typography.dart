@@ -12,15 +12,15 @@ class AppTypographyData extends Equatable {
 
   factory AppTypographyData.regular() => AppTypographyData(
         heading: TextStyle(
-          fontSize: 20.w,
-          fontWeight: FontWeight.w500,
-        ),
-        title: TextStyle(
           fontSize: 16.w,
           fontWeight: FontWeight.w500,
         ),
-        subtitle: TextStyle(
+        title: TextStyle(
           fontSize: 14.w,
+          fontWeight: FontWeight.w500,
+        ),
+        subtitle: TextStyle(
+          fontSize: 12.w,
         ),
       );
 

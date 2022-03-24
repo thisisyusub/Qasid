@@ -38,17 +38,17 @@ class _NewsBottomNavBarState extends State<NewsBottomNavBar> {
           icon: CupertinoIcons.news,
           isCurrent: _index == 0,
         ),
-        _buildBottomNavyBarItem(
-          appTheme: appTheme,
-          title: 'Saved',
-          icon: CupertinoIcons.bookmark,
-          isCurrent: _index == 1,
-        ),
+        // _buildBottomNavyBarItem(
+        //   appTheme: appTheme,
+        //   title: 'Saved',
+        //   icon: CupertinoIcons.bookmark,
+        //   isCurrent: _index == 1,
+        // ),
         _buildBottomNavyBarItem(
           appTheme: appTheme,
           title: 'Settings',
           icon: CupertinoIcons.settings,
-          isCurrent: _index == 2,
+          isCurrent: _index == 1,
         ),
       ],
     );
