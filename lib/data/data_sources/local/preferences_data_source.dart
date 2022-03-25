@@ -31,8 +31,6 @@ class PreferencesDataSourceImpl implements PreferencesDataSource {
       preferences.getString('sources')!,
     );
 
-    print('sourceMap: $sourcesMap');
-
     final sourcesList = <Selection<NewsSourceModel>>[];
 
     for (Map<String, dynamic> sourceValue in sourcesMap.values) {

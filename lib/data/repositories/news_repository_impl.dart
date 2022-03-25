@@ -65,9 +65,9 @@ class NewsRepositoryImpl implements NewsRepository {
         }
       }
 
+      allNews.shuffle();
       return Success(allNews);
     } catch (e) {
-      print(e);
       return const Error(Failure.other());
     }
   }

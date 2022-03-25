@@ -4,13 +4,13 @@ class NewsModel extends News {
   const NewsModel({
     final String? source,
     final String? title,
-    final String? url,
+    final String? imageUrl,
     final String? description,
     final String? pubDate,
   }) : super(
           source: source,
           title: title,
-          url: url,
+          imageUrl: imageUrl,
           description: description,
           pubDate: pubDate,
         );

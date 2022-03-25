@@ -4,14 +4,14 @@ class News extends Equatable {
   const News({
     this.source,
     this.title,
-    this.url,
+    this.imageUrl,
     this.description,
     this.pubDate,
   });
 
   final String? source;
   final String? title;
-  final String? url;
+  final String? imageUrl;
   final String? description;
   final String? pubDate;
 
@@ -19,7 +19,7 @@ class News extends Equatable {
   List<Object?> get props => [
         source,
         title,
-        url,
+        imageUrl,
         description,
         pubDate,
       ];

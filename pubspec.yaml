@@ -29,7 +29,6 @@ dependencies:
   shared_preferences: ^2.0.13
   theme:
     path: ./theme
-  webfeed: ^0.7.0
   webview_flutter: ^3.0.1
   xml: ^5.4.1
 

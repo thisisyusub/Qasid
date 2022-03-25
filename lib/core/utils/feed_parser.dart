@@ -31,7 +31,7 @@ class FeedParser {
           source: source,
           title: e.findElements('title').firstOrNull?.text.trim(),
           description: e.findElements('description').firstOrNull?.text.trim(),
-          url: e
+          imageUrl: e
               .findElements('enclosure')
               .map((e) => e.getAttribute('url'))
               .firstOrNull,

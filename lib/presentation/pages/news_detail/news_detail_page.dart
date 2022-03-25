@@ -26,7 +26,6 @@ class _NewsDetailPageState extends State<NewsDetailPage> {
 
   bool _isLoading = false;
   bool _isFailure = false;
-  WebViewController? _controller;
 
   @override
   Widget build(BuildContext context) {
@@ -68,11 +67,6 @@ class _NewsDetailPageState extends State<NewsDetailPage> {
             WebView(
               initialUrl: widget.url,
               javascriptMode: JavascriptMode.unrestricted,
-              onWebViewCreated: (controller) {
-                setState(() {
-                  _controller = controller;
-                });
-              },
               onPageStarted: (_) {
                 setState(() {
                   _isLoading = true;

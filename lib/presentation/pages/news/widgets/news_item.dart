@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:html/parser.dart';
 import 'package:theme/theme.dart';
 
 import '../../../../domain/entities/news.dart';
@@ -26,15 +27,16 @@ class NewsItem extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                news.title ?? '',
-                style: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.w700,
+              if (news.title != null)
+                Text(
+                  parse(news.title!).body?.text ?? '',
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w700,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
-                textAlign: TextAlign.center,
-              ),
               if (news.description != null && news.description!.isNotEmpty)
                 const SizedBox(height: 5.0),
               if (news.description != null && news.description!.isNotEmpty)
@@ -71,7 +73,7 @@ class NewsItem extends StatelessWidget {
                     width: constraints.maxWidth,
                     height: constraints.maxHeight,
                     fit: BoxFit.cover,
-                    image: news.url ?? '',
+                    image: news.imageUrl ?? '',
                   ),
                 ),
                 Positioned.fill(
@@ -88,9 +90,8 @@ class NewsItem extends StatelessWidget {
                           Navigator.of(context).push(
                             MaterialPageRoute(
                               builder: (_) {
-                                return const NewsDetailPage(
-                                  url:
-                                      'https://apa.az/az/mdb-olkeleri/peskov-biz-amansiz-informasiya-saxtakarliq-muharibesinde-yasayiriq-693893',
+                                return NewsDetailPage(
+                                  url: news.imageUrl!,
                                 );
                               },
                             ),

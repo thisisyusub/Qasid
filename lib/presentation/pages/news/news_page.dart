@@ -62,11 +62,10 @@ class NewsPage extends StatelessWidget {
                 itemCount: 15,
               ),
             ),
-          const SizedBox(height: 10),
+          //const SizedBox(height: 10),
           Expanded(
             child: BlocBuilder<NewsListCubit, NewsState>(
               builder: (_, state) {
-                print('state: $state');
                 if (state.isInProgress) {
                   return const Center(
                     child: CircularProgressIndicator(
@@ -104,22 +103,6 @@ class NewsPage extends StatelessWidget {
               },
             ),
           ),
-          // Expanded(
-          //   child: LayoutBuilder(
-          //     builder: (context, constraints) {
-          //       return PageView.builder(
-          //         scrollDirection: Axis.vertical,
-          //         itemBuilder: (_, index) {
-          //           return NewsItem(
-          //             news: newsList[index],
-          //             constraints: constraints,
-          //           );
-          //         },
-          //         itemCount: newsList.length,
-          //       );
-          //     },
-          //   ),
-          // ),
         ],
       ),
     );
