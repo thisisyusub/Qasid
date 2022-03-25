@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../injection_container.dart';
 import '../../bloc/auth/auth_cubit.dart';
+import '../../bloc/news_list/news_list_cubit.dart';
 import '../../bloc/news_source/news_source_cubit.dart';
 import '../main/main_page.dart';
 import '../source_selection/source_selection_page.dart';
@@ -24,7 +25,10 @@ class AuthPage extends StatelessWidget {
             ),
           );
         } else if (state == SourceState.submitted) {
-          return const MainPage();
+          return BlocProvider<NewsListCubit>(
+            create: (_) => di()..fetchAllNews(),
+            child: const MainPage(),
+          );
         } else {
           return BlocProvider<NewsSourceCubit>(
             create: (context) => di()..fetchNewsSources(),

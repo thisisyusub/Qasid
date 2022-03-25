@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:theme/theme.dart';
 
-import '../../../../main.dart';
+import '../../../../domain/entities/news.dart';
 import '../../news_detail/news_detail_page.dart';
 
 class NewsItem extends StatelessWidget {
