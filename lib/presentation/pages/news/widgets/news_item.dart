@@ -23,7 +23,7 @@ class NewsItem extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -61,6 +61,7 @@ class NewsItem extends StatelessWidget {
             ],
           ),
         ),
+        const SizedBox(height: 10),
         Expanded(
           child: SizedBox(
             width: constraints.maxWidth * 0.9,
@@ -87,15 +88,18 @@ class NewsItem extends StatelessWidget {
                         borderRadius: BorderRadius.circular(8.0),
                         splashColor: Colors.black26,
                         onTap: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (_) {
-                                return NewsDetailPage(
-                                  url: news.imageUrl!,
-                                );
-                              },
-                            ),
-                          );
+                          if (news.link != null) {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (_) {
+                                  return NewsDetailPage(
+                                    title: news.source ?? '',
+                                    url: news.link!,
+                                  );
+                                },
+                              ),
+                            );
+                          }
                         },
                       ),
                     ),

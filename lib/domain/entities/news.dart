@@ -7,6 +7,7 @@ class News extends Equatable {
     this.imageUrl,
     this.description,
     this.pubDate,
+    this.link,
   });
 
   final String? source;
@@ -14,6 +15,7 @@ class News extends Equatable {
   final String? imageUrl;
   final String? description;
   final String? pubDate;
+  final String? link;
 
   @override
   List<Object?> get props => [
@@ -22,5 +24,6 @@ class News extends Equatable {
         imageUrl,
         description,
         pubDate,
+        link,
       ];
 }

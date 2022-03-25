@@ -7,11 +7,13 @@ class NewsModel extends News {
     final String? imageUrl,
     final String? description,
     final String? pubDate,
+    final String? link,
   }) : super(
           source: source,
           title: title,
           imageUrl: imageUrl,
           description: description,
           pubDate: pubDate,
+          link: link,
         );
 }

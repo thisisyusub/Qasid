@@ -22,11 +22,12 @@ class NewsPage extends StatelessWidget {
       backgroundColor: appColors.primaryColor,
       appBar: AppBar(
         backgroundColor: Colors.white,
+        centerTitle: true,
         title: Text(
           'Qasid',
           style: Theme.of(context).textTheme.headline6,
         ),
-        elevation: 0,
+        elevation: .0,
       ),
       body: Column(
         children: [
@@ -86,6 +87,7 @@ class NewsPage extends StatelessWidget {
                   return LayoutBuilder(
                     builder: (_, constraints) {
                       return PageView.builder(
+                        physics: const BouncingScrollPhysics(),
                         scrollDirection: Axis.vertical,
                         itemBuilder: (_, index) {
                           return NewsItem(

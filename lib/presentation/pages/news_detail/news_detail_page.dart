@@ -7,9 +7,11 @@ import 'package:webview_flutter/webview_flutter.dart';
 class NewsDetailPage extends StatefulWidget {
   const NewsDetailPage({
     Key? key,
+    required this.title,
     required this.url,
   }) : super(key: key);
 
+  final String title;
   final String url;
 
   @override
@@ -37,7 +39,7 @@ class _NewsDetailPageState extends State<NewsDetailPage> {
           color: Colors.black,
         ),
         title: Text(
-          'Title here.................',
+          widget.title,
           style: Theme.of(context).textTheme.headline6,
         ),
         elevation: 0,

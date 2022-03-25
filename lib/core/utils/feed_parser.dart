@@ -36,6 +36,7 @@ class FeedParser {
               .map((e) => e.getAttribute('url'))
               .firstOrNull,
           pubDate: e.findElements('pubDate').firstOrNull?.text,
+          link: e.findElements('link').firstOrNull?.text,
         );
 
         return news;
