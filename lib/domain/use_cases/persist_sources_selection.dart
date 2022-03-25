@@ -25,6 +25,7 @@ class PersistSourcesSelection
           value: NewsSourceModel(
             title: param.value.title,
             feedUrl: param.value.feedUrl,
+            dateParser: param.value.dateParser,
             hasEnglishVersion: param.value.hasEnglishVersion,
             hasRussianVersion: param.value.hasRussianVersion,
           ),

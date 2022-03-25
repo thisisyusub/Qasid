@@ -12,10 +12,6 @@ dependency_overrides:
   collection: ^1.15.0
 
 dependencies:
-  responsiveness:
-    path: ./responsiveness
-  theme:
-    path: ./theme    
   bottom_navy_bar: ^6.0.0
   cupertino_icons: ^1.0.2
   equatable: ^2.0.3
@@ -27,7 +23,12 @@ dependencies:
   get_it: ^7.2.0
   html: ^0.15.0
   http: ^0.13.4
+  intl: ^0.17.0
+  responsiveness:
+    path: ./responsiveness
   shared_preferences: ^2.0.13
+  theme:
+    path: ./theme
   webfeed: ^0.7.0
   webview_flutter: ^3.0.1
   xml: ^5.4.1
@@ -40,7 +41,6 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   generate: true
-
 
   assets:
     - assets/

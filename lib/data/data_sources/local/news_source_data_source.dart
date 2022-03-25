@@ -9,16 +9,19 @@ class NewsSourceDataSourceImpl implements NewsSourceDataSource {
     NewsSourceModel(
       title: 'Technote',
       feedUrl: 'https://technote.az/feed',
+      dateParser: 'dd.M.yyyy HH:mm:ss',
     ),
     NewsSourceModel(
       title: 'Apa.az',
       feedUrl: 'https://apa.az/az/rss',
+      dateParser: 'EEE, dd MMM yyyy HH:mm:ss Z',
       hasEnglishVersion: true,
       hasRussianVersion: true,
     ),
     NewsSourceModel(
       title: 'Report.az',
-      feedUrl: 'https://report.az/rss/',
+      feedUrl: 'https://report.az/az/rss/',
+      dateParser: '',
       hasRussianVersion: true,
       hasEnglishVersion: true,
     ),

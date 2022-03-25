@@ -12,15 +12,26 @@ class AuthPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final authenticated = context.watch<AuthCubit>().state;
-
-    if (authenticated) {
-      return const MainPage();
-    } else {
-      return BlocProvider<NewsSourceCubit>(
-        create: (context) => di()..fetchNewsSources(),
-        child: const SourceSelectionPage(),
-      );
-    }
+    return BlocBuilder<AuthCubit, SourceState>(
+      builder: (_, state) {
+        if (state == SourceState.checking) {
+          return Scaffold(
+            backgroundColor: Colors.white,
+            body: SafeArea(
+              child: Center(
+                child: Image.asset('assets/placeholder_logo.png'),
+              ),
+            ),
+          );
+        } else if (state == SourceState.submitted) {
+          return const MainPage();
+        } else {
+          return BlocProvider<NewsSourceCubit>(
+            create: (context) => di()..fetchNewsSources(),
+            child: const SourceSelectionPage(),
+          );
+        }
+      },
+    );
   }
 }
