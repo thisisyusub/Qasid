@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:qasid/presentation/widgets/loading.dart';
 import 'package:theme/theme.dart';
 
 import '../../../core/bloc/data_state.dart';
@@ -21,11 +22,13 @@ class NewsPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: appColors.primaryColor,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: appColors.primaryColor,
         centerTitle: true,
         title: Text(
           'Qasid',
-          style: Theme.of(context).textTheme.headline6,
+          style: appTheme.typography.heading.copyWith(
+            color: appColors.secondaryColor,
+          ),
         ),
         elevation: .0,
       ),
@@ -68,11 +71,7 @@ class NewsPage extends StatelessWidget {
             child: BlocBuilder<NewsListCubit, NewsState>(
               builder: (_, state) {
                 if (state.isInProgress) {
-                  return const Center(
-                    child: CircularProgressIndicator(
-                      color: Colors.black,
-                    ),
-                  );
+                  return const Loading();
                 }
 
                 if (state.isFailure) {

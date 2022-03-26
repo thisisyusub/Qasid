@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
 
               return AppTheme(
                 data: AppThemeData(
-                  colors: AppColorsData.dark(),
+                  colors: AppColorsData.light(),
                   typography: AppTypographyData.regular(),
                 ),
                 child: Builder(
@@ -34,6 +34,9 @@ class MyApp extends StatelessWidget {
                     return MaterialApp(
                       title: 'Qasid',
                       locale: const Locale('az'),
+                      darkTheme: ThemeData(
+                        brightness: Brightness.dark,
+                      ),
                       localizationsDelegates:
                           AppLocalizations.localizationsDelegates,
                       supportedLocales: AppLocalizations.supportedLocales,

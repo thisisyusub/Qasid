@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:theme/theme.dart';
 
 import '../news/news_page.dart';
 import 'widgets/news_bottom_nav_bar.dart';
@@ -15,7 +16,10 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
+    final appTheme = AppTheme.of(context);
+
     return Scaffold(
+      backgroundColor: appTheme.colors.primaryColor,
       body: PageView(
         controller: _pageController,
         allowImplicitScrolling: false,

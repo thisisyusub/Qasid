@@ -60,7 +60,7 @@ class NewsRepositoryImpl implements NewsRepository {
               allNews.add(news);
             }
           }
-        } catch (_) {
+        } catch (e) {
           continue;
         }
       }

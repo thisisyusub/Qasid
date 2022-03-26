@@ -21,7 +21,7 @@ class NewsSourceDataSourceImpl implements NewsSourceDataSource {
     NewsSourceModel(
       title: 'Report.az',
       feedUrl: 'https://report.az/az/rss/',
-      dateParser: '',
+      dateParser: 'EEE, dd MMM yyyy HH:mm:ss Z',
       hasRussianVersion: true,
       hasEnglishVersion: true,
     ),

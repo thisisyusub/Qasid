@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:qasid/presentation/widgets/loading.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class NewsDetailPage extends StatefulWidget {
@@ -86,16 +87,7 @@ class _NewsDetailPageState extends State<NewsDetailPage> {
                 });
               },
             ),
-            if (_isLoading)
-              const Center(
-                child: CircularProgressIndicator(
-                  backgroundColor: Colors.white,
-                  color: Colors.white,
-                  valueColor: AlwaysStoppedAnimation<Color>(
-                    Colors.black,
-                  ),
-                ),
-              ),
+            if (_isLoading) const Loading(),
             if (_isFailure)
               const Center(
                 child: Icon(

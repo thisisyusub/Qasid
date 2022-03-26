@@ -24,6 +24,8 @@ class _NewsBottomNavBarState extends State<NewsBottomNavBar> {
 
     return BottomNavyBar(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
+      backgroundColor: appTheme.colors.primaryColor,
+      showElevation: true,
       selectedIndex: _index,
       onItemSelected: (index) {
         setState(() {
@@ -38,12 +40,6 @@ class _NewsBottomNavBarState extends State<NewsBottomNavBar> {
           icon: CupertinoIcons.news,
           isCurrent: _index == 0,
         ),
-        // _buildBottomNavyBarItem(
-        //   appTheme: appTheme,
-        //   title: 'Saved',
-        //   icon: CupertinoIcons.bookmark,
-        //   isCurrent: _index == 1,
-        // ),
         _buildBottomNavyBarItem(
           appTheme: appTheme,
           title: 'Settings',
@@ -63,16 +59,15 @@ class _NewsBottomNavBarState extends State<NewsBottomNavBar> {
     return BottomNavyBarItem(
       icon: Icon(
         icon,
-        color: isCurrent ? Colors.black : appTheme.colors.accentColor,
       ),
       title: Text(
         title,
-        style: const TextStyle(
-          color: Colors.black,
+        style: appTheme.typography.subtitle.copyWith(
+          color: appTheme.colors.secondaryColor,
         ),
       ),
       textAlign: TextAlign.center,
-      activeColor: appTheme.colors.accentColor,
+      activeColor: appTheme.colors.secondaryColor,
       inactiveColor: appTheme.colors.accentColor,
     );
   }
