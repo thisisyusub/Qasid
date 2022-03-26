@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:responsiveness/responsiveness.dart';
@@ -8,6 +9,7 @@ import '../core/utils/app_scroll_behaviour.dart';
 import '../injection_container.dart';
 import 'bloc/auth/auth_cubit.dart';
 import 'bloc/localization/localization_cubit.dart';
+import 'bloc/theme/theme_cubit.dart';
 import 'pages/auth/auth_page.dart';
 
 class MyApp extends StatelessWidget {
@@ -23,26 +25,49 @@ class MyApp extends StatelessWidget {
         BlocProvider<LocalizationCubit>(
           create: (context) => di(),
         ),
+        BlocProvider<ThemeCubit>(
+          create: (context) => di(),
+        ),
       ],
       child: LayoutBuilder(
         builder: (context, constraints) {
           return OrientationBuilder(
             builder: (context, orientation) {
               SizeConfig.init(constraints, orientation);
+              final themeMode = context.watch<ThemeCubit>().state;
+
+              late final AppColorsData appColors;
+
+              if (themeMode == ThemeMode.light) {
+                appColors = AppColorsData.light();
+              } else if (themeMode == ThemeMode.dark) {
+                appColors = AppColorsData.dark();
+              } else {
+                var brightness =
+                    SchedulerBinding.instance!.window.platformBrightness;
+
+                if (brightness == Brightness.light) {
+                  appColors = AppColorsData.light();
+                } else {
+                  appColors = AppColorsData.dark();
+                }
+              }
 
               return AppTheme(
                 data: AppThemeData(
-                  colors: AppColorsData.dark(),
+                  colors: appColors,
                   typography: AppTypographyData.regular(),
                 ),
                 child: Builder(
                   builder: (context) {
                     final appTheme = AppTheme.of(context);
                     final locale = context.watch<LocalizationCubit>().state;
+                    final themeMode = context.watch<ThemeCubit>().state;
 
                     return MaterialApp(
                       title: 'Qasid',
                       locale: locale,
+                      themeMode: themeMode,
                       localizationsDelegates:
                           AppLocalizations.localizationsDelegates,
                       supportedLocales: AppLocalizations.supportedLocales,

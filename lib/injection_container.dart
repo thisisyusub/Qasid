@@ -1,6 +1,5 @@
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
-import 'package:qasid/domain/use_cases/change_theme_mode.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'data/data_sources/local/news_source_data_source.dart';
@@ -13,6 +12,7 @@ import 'domain/repositories/news_repository.dart';
 import 'domain/repositories/news_source_repository.dart';
 import 'domain/repositories/preferences_repository.dart';
 import 'domain/use_cases/change_locale.dart';
+import 'domain/use_cases/change_theme_mode.dart';
 import 'domain/use_cases/get_default_locale.dart';
 import 'domain/use_cases/get_default_theme_mode.dart';
 import 'domain/use_cases/get_news_list.dart';
@@ -24,6 +24,7 @@ import 'presentation/bloc/auth/auth_cubit.dart';
 import 'presentation/bloc/localization/localization_cubit.dart';
 import 'presentation/bloc/news_list/news_list_cubit.dart';
 import 'presentation/bloc/news_source/news_source_cubit.dart';
+import 'presentation/bloc/theme/theme_cubit.dart';
 
 final di = GetIt.instance;
 
@@ -44,6 +45,13 @@ Future<void> init() async {
     () => LocalizationCubit(
       getDefaultLocale: di(),
       changeLocale: di(),
+    ),
+  );
+
+  di.registerFactory(
+    () => ThemeCubit(
+      getDefaultThemeMode: di(),
+      changeThemeMode: di(),
     ),
   );
 

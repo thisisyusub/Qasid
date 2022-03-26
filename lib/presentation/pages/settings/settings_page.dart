@@ -3,6 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:theme/theme.dart';
 
 import '../../fragments/change_language/change_language_fragment.dart';
+import '../../fragments/change_theme/change_theme_fragment.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({Key? key}) : super(key: key);
@@ -29,7 +30,9 @@ class SettingsPage extends StatelessWidget {
             ),
           ),
           ListTile(
-            onTap: () {},
+            onTap: () {
+              ChangeThemeModeFragment.build(context: context);
+            },
             title: Text(
               localization.changeTheme,
               style: unweightedTitle,
