@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:html/parser.dart';
+import 'package:theme/theme.dart';
 
 import '../../../../domain/entities/news.dart';
 import '../../news_detail/news_detail_page.dart';
@@ -15,6 +16,8 @@ class NewsItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appTheme = AppTheme.of(context);
+
     return InkWell(
       onTap: () {
         if (news.link != null) {
@@ -40,9 +43,9 @@ class NewsItem extends StatelessWidget {
             if (news.title != null)
               Text(
                 parse(news.title!).body?.text ?? '',
-                // style: appTheme.typography.title.copyWith(
-                //   color: appTheme.colors.secondaryColor,
-                // ),
+                style: appTheme.typography.title.copyWith(
+                  color: appTheme.colors.secondaryColor,
+                ),
                 textAlign: TextAlign.center,
               ),
             if (news.description != null && news.description!.isNotEmpty)
@@ -50,12 +53,10 @@ class NewsItem extends StatelessWidget {
             if (news.description != null && news.description!.isNotEmpty)
               Text(
                 news.description ?? '',
-                // style: appTheme.typography.subtitle.copyWith(
-                //   color: appTheme.colors.secondaryColor,
-                //   fontStyle: FontStyle.italic,
-                // ),
-                maxLines: 3,
-                overflow: TextOverflow.ellipsis,
+                style: appTheme.typography.subtitle.copyWith(
+                  color: appTheme.colors.secondaryColor,
+                  fontStyle: FontStyle.italic,
+                ),
                 textAlign: TextAlign.center,
               ),
             const SizedBox(height: 10),
@@ -71,13 +72,13 @@ class NewsItem extends StatelessWidget {
               ),
             if (news.source != null)
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.only(top: 8.0),
                 child: Text(
                   news.source ?? '',
-                  // style: appTheme.typography.subtitle.copyWith(
-                  //   color: appTheme.colors.secondaryColor,
-                  //   fontStyle: FontStyle.italic,
-                  // ),
+                  style: appTheme.typography.subtitle.copyWith(
+                    color: appTheme.colors.secondaryColor,
+                    fontStyle: FontStyle.italic,
+                  ),
                   maxLines: 3,
                   overflow: TextOverflow.ellipsis,
                   textAlign: TextAlign.center,

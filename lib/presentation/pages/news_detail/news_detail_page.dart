@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:theme/theme.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 import '../../widgets/loading.dart';
@@ -34,18 +35,20 @@ class _NewsDetailPageState extends State<NewsDetailPage> {
 
   @override
   Widget build(BuildContext context) {
+    final appTheme = AppTheme.of(context);
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: false,
-        //backgroundColor: appTheme.colors.primaryColor,
+        backgroundColor: appTheme.colors.primaryColor,
         iconTheme: IconThemeData(
-            // color: appTheme.colors.secondaryColor,
-            ),
+          color: appTheme.colors.secondaryColor,
+        ),
         title: Text(
           widget.title,
-          // style: appTheme.typography.heading.copyWith(
-          //   color: appTheme.colors.secondaryColor,
-          // ),
+          style: appTheme.typography.heading.copyWith(
+            color: appTheme.colors.secondaryColor,
+          ),
         ),
         elevation: 0,
         actions: [
@@ -58,7 +61,7 @@ class _NewsDetailPageState extends State<NewsDetailPage> {
             },
             icon: Icon(
               CupertinoIcons.share,
-              // color: appTheme.colors.secondaryColor,
+              color: appTheme.colors.secondaryColor,
               size: 20,
             ),
           ),

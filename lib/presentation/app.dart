@@ -7,6 +7,7 @@ import 'package:theme/theme.dart';
 import '../core/utils/app_scroll_behaviour.dart';
 import '../injection_container.dart';
 import 'bloc/auth/auth_cubit.dart';
+import 'bloc/localization/localization_cubit.dart';
 import 'pages/auth/auth_page.dart';
 
 class MyApp extends StatelessWidget {
@@ -14,8 +15,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<AuthCubit>(
-      create: (context) => di()..checkAuth(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<AuthCubit>(
+          create: (context) => di()..checkAuth(),
+        ),
+        BlocProvider<LocalizationCubit>(
+          create: (context) => di(),
+        ),
+      ],
       child: LayoutBuilder(
         builder: (context, constraints) {
           return OrientationBuilder(
@@ -24,16 +32,17 @@ class MyApp extends StatelessWidget {
 
               return AppTheme(
                 data: AppThemeData(
-                  colors: AppColorsData.light(),
+                  colors: AppColorsData.dark(),
                   typography: AppTypographyData.regular(),
                 ),
                 child: Builder(
                   builder: (context) {
                     final appTheme = AppTheme.of(context);
+                    final locale = context.watch<LocalizationCubit>().state;
 
                     return MaterialApp(
                       title: 'Qasid',
-                      locale: const Locale('az'),
+                      locale: locale,
                       localizationsDelegates:
                           AppLocalizations.localizationsDelegates,
                       supportedLocales: AppLocalizations.supportedLocales,

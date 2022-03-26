@@ -16,7 +16,7 @@ class NewsSourceCubit extends Cubit<List<Selection<NewsSource>>> {
   final PersistSourcesSelection persistSourcesSelection;
 
   void fetchNewsSources() async {
-    final result = await getNewsSources(NoParams());
+    final result = getNewsSources(NoParams());
 
     result.when(
       error: (_) => emit([]),

@@ -4,5 +4,11 @@
     "selectSoureTitle": "Əldə etmək istədiyiniz xəbərlərin\nmənbələrini seçin",
     "goForward": "Davam et",
     "news": "Xəbərlər",
-    "settings": "Ayarlar"
+    "settings": "Ayarlar",
+    "changeLanguage": "Dili dəyiş",
+    "changeTheme": "Rejimi dəyiş",
+    "aboutApp": "Tətbiq haqqında",
+    "azerbaijani": "Azərbaycan dili",
+    "english": "İngilis dili",
+    "russian": "Rus dili"
 }

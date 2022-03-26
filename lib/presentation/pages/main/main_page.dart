@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:theme/theme.dart';
 
 import '../news/news_page.dart';
 import '../settings/settings_page.dart';
@@ -19,11 +20,11 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return AnnotatedRegion(
       value: SystemUiOverlayStyle(
-        //statusBarColor: AppTheme.of(context).colors.primaryColor,
-        statusBarIconBrightness: Brightness.light,
+        statusBarColor: AppTheme.of(context).colors.primaryColor,
+        statusBarIconBrightness:
+            AppTheme.of(context).colors.statusBarIconBrightness,
       ),
       child: Scaffold(
-        // backgroundColor: appTheme.colors.primaryColor,
         body: PageView(
           controller: _pageController,
           allowImplicitScrolling: false,

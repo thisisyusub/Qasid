@@ -8,14 +8,14 @@ import '../../data/models/news_source_model.dart';
 import '../entities/news_source.dart';
 import '../repositories/preferences_repository.dart';
 
-class PersistSourcesSelection
-    extends UseCase<dynamic, Unit, List<Selection<NewsSource>>> {
+class PersistSourcesSelection extends UseCase<Future<Either<Failure, Unit>>,
+    List<Selection<NewsSource>>> {
   PersistSourcesSelection(this.repository);
 
   final PreferencesRepository repository;
 
   @override
-  FutureOr<Either<Failure, Unit>> call(List<Selection<NewsSource>> params) {
+  Future<Either<Failure, Unit>> call(List<Selection<NewsSource>> params) {
     final convertedParams = <Selection<NewsSourceModel>>[];
 
     for (var param in params) {

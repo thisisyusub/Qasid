@@ -4,5 +4,11 @@
     "selectSoureTitle": "Выберите источники\nиз которых вы хотите получать новости",
     "goForward": "Продолжать",
     "news": "Новости",
-    "settings": "Настройки"
+    "settings": "Настройки",
+    "changeLanguage": "Изменять язык",
+    "changeTheme": "Изменять тема",
+    "aboutApp": "О приложении",
+    "azerbaijani": "Азербайджанский",
+    "english": "Aнглийский",
+    "russian": "Pусский"
 }

@@ -11,7 +11,7 @@ class AuthCubit extends Cubit<SourceState> {
   final IsSourcesSelected isSourcesSelected;
 
   void checkAuth() async {
-    final result = await isSourcesSelected(NoParams());
+    final result = isSourcesSelected(NoParams());
     await Future.delayed(const Duration(milliseconds: 700));
 
     result.when(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:theme/theme.dart';
 
 import '../../../core/bloc/data_state.dart';
 import '../../../core/either.dart';
@@ -17,59 +17,53 @@ class NewsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final allNewsState = context.watch<NewsListCubit>().state;
+    final appTheme = AppTheme.of(context);
 
-    return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: SystemUiOverlayStyle(
-        //statusBarColor: AppTheme.of(context).colors.primaryColor,
-        statusBarIconBrightness: Brightness.light,
-      ),
-      child: Scaffold(
-        // backgroundColor: appColors.primaryColor,
-        body: RefreshIndicator(
-          //  backgroundColor: appColors.primaryColor,
-          //   color: appColors.secondaryColor,
-          onRefresh: () async {
-            context.read<NewsListCubit>().fetchAllNews();
-          },
-          child: CustomScrollView(
-            physics: const BouncingScrollPhysics(),
-            slivers: [
-              SliverAppBar(
-                centerTitle: true,
-                //   backgroundColor: appColors.primaryColor,
-                title: Text(
-                  'Qasid',
-                  // style: appTheme.typography.heading.copyWith(
-                  //   color: appColors.secondaryColor,
-                  // ),
+    return Scaffold(
+      body: RefreshIndicator(
+        backgroundColor: appTheme.colors.primaryColor,
+        color: appTheme.colors.secondaryColor,
+        onRefresh: () async {
+          context.read<NewsListCubit>().fetchAllNews();
+        },
+        child: CustomScrollView(
+          physics: const BouncingScrollPhysics(),
+          slivers: [
+            SliverAppBar(
+              centerTitle: true,
+              backgroundColor: appTheme.colors.primaryColor,
+              title: Text(
+                'Qasid',
+                style: appTheme.typography.heading.copyWith(
+                  color: appTheme.colors.secondaryColor,
                 ),
-                floating: true,
               ),
-              if (allNewsState.isInProgress)
-                const SliverFillRemaining(
-                  child: Loading(),
+              floating: true,
+            ),
+            if (allNewsState.isInProgress)
+              const SliverFillRemaining(
+                child: Loading(),
+              ),
+            if (allNewsState.isSuccess)
+              SliverList(
+                delegate: SliverChildBuilderDelegate(
+                  (context, index) {
+                    return Column(
+                      children: [
+                        NewsItem(
+                          news: allNewsState.data![index],
+                        ),
+                        Divider(
+                          height: 0,
+                          color: appTheme.colors.accentColor,
+                        ),
+                      ],
+                    );
+                  },
+                  childCount: allNewsState.data!.length,
                 ),
-              if (allNewsState.isSuccess)
-                SliverList(
-                  delegate: SliverChildBuilderDelegate(
-                    (context, index) {
-                      return Column(
-                        children: [
-                          NewsItem(
-                            news: allNewsState.data![index],
-                          ),
-                          Divider(
-                            height: 0,
-                            //  color: appColors.accentColor,
-                          ),
-                        ],
-                      );
-                    },
-                    childCount: allNewsState.data!.length,
-                  ),
-                ),
-            ],
-          ),
+              ),
+          ],
         ),
       ),
     );

@@ -4,5 +4,11 @@
     "selectSoureTitle": "Select sources\nyou want to get news",
     "goForward": "Continue",
     "news": "News",
-    "settings": "Settings"
+    "settings": "Settings",
+    "changeLanguage": "Change language",
+    "changeTheme": "Change theme",
+    "aboutApp": "About app",
+    "azerbaijani": "Azerbaijani",
+    "english": "English",
+    "russian": "Russian"
 }

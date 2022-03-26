@@ -12,6 +12,44 @@ class PreferencesRepositoryImpl implements PreferencesRepository {
   final PreferencesDataSource dataSource;
 
   @override
+  Future<Either<Failure, Unit>> persistLocale(String languageCode) async {
+    try {
+      await dataSource.persistAppLocale(languageCode);
+      return const Success(unit);
+    } catch (_) {
+      return const Error(Failure.cache());
+    }
+  }
+
+  @override
+  Either<Failure, String?> get locale {
+    try {
+      return Success(dataSource.locale);
+    } catch (_) {
+      return const Error(Failure.cache());
+    }
+  }
+
+  @override
+  Future<Either<Failure, Unit>> persistThemeMode(int themeMode) async {
+    try {
+      await dataSource.persistAppThemeMode(themeMode);
+      return const Success(unit);
+    } catch (_) {
+      return const Error(Failure.cache());
+    }
+  }
+
+  @override
+  Either<Failure, int?> get themeMode {
+    try {
+      return Success(dataSource.themeMode);
+    } catch (_) {
+      return const Error(Failure.cache());
+    }
+  }
+
+  @override
   Either<Failure, bool> get isSourcesSelected {
     try {
       return Success(dataSource.isSourcesSelected);

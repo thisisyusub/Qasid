@@ -22,6 +22,7 @@ class AuthPage extends StatelessWidget {
       value: SystemUiOverlayStyle(
         statusBarColor: theme.colors.primaryColor,
         statusBarIconBrightness: theme.colors.statusBarIconBrightness,
+        statusBarBrightness: Brightness.light,
       ),
       child: BlocConsumer<AuthCubit, SourceState>(
         listener: (_, state) {

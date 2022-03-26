@@ -1,49 +1,47 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:theme/theme.dart';
+
+import '../../fragments/change_language/change_language_fragment.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // final unweightedTitle = appTheme.typography.title.copyWith(
-    //   color: appTheme.colors.secondaryColor,
-    //   fontWeight: FontWeight.normal,
-    // );
+    final localization = AppLocalizations.of(context)!;
+    final appTheme = AppTheme.of(context);
+    final unweightedTitle = appTheme.typography.title.copyWith(
+      color: appTheme.colors.secondaryColor,
+      fontWeight: FontWeight.normal,
+    );
 
     return Scaffold(
-      //backgroundColor: appTheme.colors.primaryColor,
       body: ListView(
         children: [
           ListTile(
-            onTap: () {},
+            onTap: () {
+              ChangeLanguageFragment.build(context: context);
+            },
             title: Text(
-              'Change Language',
-              //style: unweightedTitle,
+              localization.changeLanguage,
+              style: unweightedTitle,
             ),
           ),
           ListTile(
             onTap: () {},
             title: Text(
-              'Change Theme',
-              // style: unweightedTitle,
+              localization.changeTheme,
+              style: unweightedTitle,
             ),
           ),
           ListTile(
             onTap: () {},
             title: Text(
-              'About App',
-              //style: unweightedTitle,
+              localization.aboutApp,
+              style: unweightedTitle,
             ),
           ),
-          // ListTile(
-          //   onTap: () {
-          //     Share.share('app link');
-          //   },
-          //   title: Text(
-          //     'Share',
-          //     style: unweightedTitle,
-          //   ),
-          // ),
         ],
       ),
     );
