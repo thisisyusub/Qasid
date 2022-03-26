@@ -1,0 +1,65 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "qasid",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "qasid (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "qasid (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "responsiveness",
+            "cwd": "responsiveness",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "responsiveness (profile mode)",
+            "cwd": "responsiveness",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "responsiveness (release mode)",
+            "cwd": "responsiveness",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "theme",
+            "cwd": "theme",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "theme (profile mode)",
+            "cwd": "theme",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "theme (release mode)",
+            "cwd": "theme",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}

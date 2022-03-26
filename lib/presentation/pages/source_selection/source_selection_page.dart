@@ -23,6 +23,7 @@ class SourceSelectionPage extends StatelessWidget {
     final newsSources = sourceCubit.state;
 
     return Scaffold(
+      backgroundColor: appTheme.colors.primaryColor,
       body: SafeArea(
         child: LayoutBuilder(
           builder: (context, constraints) {
@@ -90,7 +91,7 @@ class _SubmitButton extends StatelessWidget {
         child: Text(localization.goForward),
         style: ButtonStyle(
           backgroundColor: MaterialStateProperty.all(
-            appTheme.colors.secondaryColor,
+            appTheme.colors.buttonColor,
           ),
           textStyle: MaterialStateProperty.all(
             appTheme.typography.title.copyWith(
@@ -139,7 +140,7 @@ class _NewsSources extends StatelessWidget {
                 ),
                 CupertinoSwitch(
                   value: newsSources[i].selected,
-                  activeColor: appTheme.colors.secondaryColor,
+                  activeColor: appTheme.colors.buttonColor,
                   onChanged: (_) {
                     sourceCubit.changeSelection(i);
                   },

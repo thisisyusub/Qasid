@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
 
               return AppTheme(
                 data: AppThemeData(
-                  colors: AppColorsData.light(),
+                  colors: AppColorsData.dark(),
                   typography: AppTypographyData.regular(),
                 ),
                 child: Builder(
