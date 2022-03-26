@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:theme/theme.dart';
+import 'package:flutter/services.dart';
 
 import '../news/news_page.dart';
+import '../settings/settings_page.dart';
 import 'widgets/news_bottom_nav_bar.dart';
 
 class MainPage extends StatefulWidget {
@@ -16,27 +17,31 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
-    final appTheme = AppTheme.of(context);
-
-    return Scaffold(
-      backgroundColor: appTheme.colors.primaryColor,
-      body: PageView(
-        controller: _pageController,
-        allowImplicitScrolling: false,
-        physics: const NeverScrollableScrollPhysics(),
-        children: const [
-          NewsPage(),
-          Scaffold(),
-        ],
+    return AnnotatedRegion(
+      value: SystemUiOverlayStyle(
+        //statusBarColor: AppTheme.of(context).colors.primaryColor,
+        statusBarIconBrightness: Brightness.light,
       ),
-      bottomNavigationBar: NewsBottomNavBar(
-        onChange: (index) {
-          _pageController.animateToPage(
-            index,
-            duration: const Duration(milliseconds: 700),
-            curve: Curves.fastOutSlowIn,
-          );
-        },
+      child: Scaffold(
+        // backgroundColor: appTheme.colors.primaryColor,
+        body: PageView(
+          controller: _pageController,
+          allowImplicitScrolling: false,
+          physics: const NeverScrollableScrollPhysics(),
+          children: const [
+            NewsPage(),
+            SettingsPage(),
+          ],
+        ),
+        bottomNavigationBar: NewsBottomNavBar(
+          onChange: (index) {
+            _pageController.animateToPage(
+              index,
+              duration: const Duration(milliseconds: 700),
+              curve: Curves.fastOutSlowIn,
+            );
+          },
+        ),
       ),
     );
   }

@@ -34,15 +34,13 @@ class MyApp extends StatelessWidget {
                     return MaterialApp(
                       title: 'Qasid',
                       locale: const Locale('az'),
-                      darkTheme: ThemeData(
-                        brightness: Brightness.dark,
-                      ),
                       localizationsDelegates:
                           AppLocalizations.localizationsDelegates,
                       supportedLocales: AppLocalizations.supportedLocales,
                       theme: ThemeData(
                         primaryColor: appTheme.colors.primaryColor,
                         primaryColorDark: appTheme.colors.secondaryColor,
+                        scaffoldBackgroundColor: appTheme.colors.primaryColor,
                       ),
                       builder: (context, child) {
                         return ScrollConfiguration(

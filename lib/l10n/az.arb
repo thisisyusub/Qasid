@@ -2,5 +2,7 @@
     "@@locale": "az",
     "qasid": "Qasid",
     "selectSoureTitle": "Əldə etmək istədiyiniz xəbərlərin\nmənbələrini seçin",
-    "goForward": "Davam et"
+    "goForward": "Davam et",
+    "news": "Xəbərlər",
+    "settings": "Ayarlar"
 }

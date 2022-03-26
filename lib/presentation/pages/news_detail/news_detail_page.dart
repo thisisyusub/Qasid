@@ -2,8 +2,10 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:qasid/presentation/widgets/loading.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+
+import '../../widgets/loading.dart';
 
 class NewsDetailPage extends StatefulWidget {
   const NewsDetailPage({
@@ -34,31 +36,29 @@ class _NewsDetailPageState extends State<NewsDetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
         centerTitle: false,
-        iconTheme: const IconThemeData(
-          color: Colors.black,
-        ),
+        //backgroundColor: appTheme.colors.primaryColor,
+        iconTheme: IconThemeData(
+            // color: appTheme.colors.secondaryColor,
+            ),
         title: Text(
           widget.title,
-          style: Theme.of(context).textTheme.headline6,
+          // style: appTheme.typography.heading.copyWith(
+          //   color: appTheme.colors.secondaryColor,
+          // ),
         ),
         elevation: 0,
         actions: [
-          if (false)
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                CupertinoIcons.bookmark,
-                color: Colors.black,
-                size: 20,
-              ),
-            ),
           IconButton(
-            onPressed: () {},
-            icon: const Icon(
+            onPressed: () {
+              Share.share(
+                widget.url,
+                subject: 'Qasid',
+              );
+            },
+            icon: Icon(
               CupertinoIcons.share,
-              color: Colors.black,
+              // color: appTheme.colors.secondaryColor,
               size: 20,
             ),
           ),

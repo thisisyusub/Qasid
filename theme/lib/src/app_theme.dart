@@ -2,10 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'app_theme_data.dart';
 
-export 'app_colors.dart';
-export 'app_theme_data.dart';
-export 'typography.dart';
-
 class AppTheme extends InheritedWidget {
   const AppTheme({
     Key? key,
