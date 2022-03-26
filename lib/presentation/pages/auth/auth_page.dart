@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 import '../../../injection_container.dart';
 import '../../bloc/auth/auth_cubit.dart';
@@ -13,28 +14,27 @@ class AuthPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AuthCubit, SourceState>(
+    return BlocConsumer<AuthCubit, SourceState>(
+      listener: (_, state) {
+        if (state == SourceState.notSubmitted ||
+            state == SourceState.submitted) {
+          FlutterNativeSplash.remove();
+        }
+      },
       builder: (_, state) {
-        if (state == SourceState.checking) {
-          return Scaffold(
-            backgroundColor: Colors.white,
-            body: SafeArea(
-              child: Center(
-                child: Image.asset('assets/placeholder_logo.png'),
-              ),
-            ),
-          );
-        } else if (state == SourceState.submitted) {
+        if (state == SourceState.submitted) {
           return BlocProvider<NewsListCubit>(
             create: (_) => di()..fetchAllNews(),
             child: const MainPage(),
           );
-        } else {
+        } else if (state == SourceState.notSubmitted) {
           return BlocProvider<NewsSourceCubit>(
             create: (context) => di()..fetchNewsSources(),
             child: const SourceSelectionPage(),
           );
         }
+
+        return const SizedBox.shrink();
       },
     );
   }
