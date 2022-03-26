@@ -86,7 +86,7 @@ class NewsPage extends StatelessWidget {
 
                   return LayoutBuilder(
                     builder: (_, constraints) {
-                      return PageView.builder(
+                      return ListView.separated(
                         physics: const BouncingScrollPhysics(),
                         scrollDirection: Axis.vertical,
                         itemBuilder: (_, index) {
@@ -94,6 +94,17 @@ class NewsPage extends StatelessWidget {
                             news: allNews[index],
                             constraints: constraints,
                           );
+                        },
+                        separatorBuilder: (_, index) {
+                          if (index != allNews.length - 1) {
+                            return const Divider(
+                              height: 0,
+                              thickness: 0.5,
+                              color: Colors.grey,
+                            );
+                          }
+
+                          return const SizedBox.shrink();
                         },
                         itemCount: allNews.length,
                       );
