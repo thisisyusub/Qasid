@@ -24,10 +24,14 @@ class ThemeCubit extends Cubit<ThemeMode> {
 
   final ChangeThemeMode changeThemeMode;
 
-  void changeTheme(int index) async {
-    final result = await changeThemeMode(index);
+  void changeTheme(int index, {bool save = true}) async {
+    if (save) {
+      final result = await changeThemeMode(index);
 
-    if (result.isSuccess()) {
+      if (result.isSuccess()) {
+        emit(_intToThemeMode(index));
+      }
+    } else {
       emit(_intToThemeMode(index));
     }
   }

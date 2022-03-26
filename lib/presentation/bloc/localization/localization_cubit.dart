@@ -9,7 +9,7 @@ class LocalizationCubit extends Cubit<Locale> {
   LocalizationCubit({
     required GetDefaultLocale getDefaultLocale,
     required this.changeLocale,
-  }) : super(const Locale('en', 'US')) {
+  }) : super(const Locale('az', 'AZ')) {
     final result = getDefaultLocale(NoParams());
 
     result.when(
