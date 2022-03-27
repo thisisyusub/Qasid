@@ -8,22 +8,28 @@ class NewsSourceDataSourceImpl implements NewsSourceDataSource {
   final _newsSources = const <NewsSourceModel>[
     NewsSourceModel(
       title: 'Technote',
-      feedUrl: 'https://technote.az/feed',
       dateParser: 'dd.M.yyyy HH:mm:ss',
+      feedUrls: <String, String>{
+        'az': 'https://technote.az/feed',
+      },
     ),
     NewsSourceModel(
       title: 'Apa.az',
-      feedUrl: 'https://apa.az/az/rss',
       dateParser: 'EEE, dd MMM yyyy HH:mm:ss Z',
-      hasEnglishVersion: true,
-      hasRussianVersion: true,
+      feedUrls: <String, String>{
+        'az': 'https://apa.az/az/rss',
+        'en': 'https://apa.az/en/rss',
+        'ru': 'https://apa.az/ru/rss',
+      },
     ),
     NewsSourceModel(
       title: 'Report.az',
-      feedUrl: 'https://report.az/az/rss/',
       dateParser: 'EEE, dd MMM yyyy HH:mm:ss Z',
-      hasRussianVersion: true,
-      hasEnglishVersion: true,
+      feedUrls: <String, String>{
+        'az': 'https://report.az/az/rss/',
+        'en': 'https://report.az/en/rss/',
+        'ru': 'https://report.az/ru/rss/',
+      },
     ),
   ];
 

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:responsiveness/responsiveness.dart';
@@ -40,17 +39,8 @@ class MyApp extends StatelessWidget {
 
               if (themeMode == ThemeMode.light) {
                 appColors = AppColorsData.light();
-              } else if (themeMode == ThemeMode.dark) {
-                appColors = AppColorsData.dark();
               } else {
-                var brightness =
-                    SchedulerBinding.instance!.window.platformBrightness;
-
-                if (brightness == Brightness.light) {
-                  appColors = AppColorsData.light();
-                } else {
-                  appColors = AppColorsData.dark();
-                }
+                appColors = AppColorsData.dark();
               }
 
               return AppTheme(
@@ -68,6 +58,7 @@ class MyApp extends StatelessWidget {
                       title: 'Qasid',
                       locale: locale,
                       themeMode: themeMode,
+                      debugShowCheckedModeBanner: false,
                       localizationsDelegates:
                           AppLocalizations.localizationsDelegates,
                       supportedLocales: AppLocalizations.supportedLocales,

@@ -24,10 +24,8 @@ class PersistSourcesSelection extends UseCase<Future<Either<Failure, Unit>>,
           selected: param.selected,
           value: NewsSourceModel(
             title: param.value.title,
-            feedUrl: param.value.feedUrl,
+            feedUrls: param.value.feedUrls,
             dateParser: param.value.dateParser,
-            hasEnglishVersion: param.value.hasEnglishVersion,
-            hasRussianVersion: param.value.hasRussianVersion,
           ),
         ),
       );

@@ -8,7 +8,6 @@ import '../../../injection_container.dart';
 import '../../bloc/auth/auth_cubit.dart';
 import '../../bloc/news_list/news_list_cubit.dart';
 import '../../bloc/news_source/news_source_cubit.dart';
-import '../../bloc/theme/theme_cubit.dart';
 import '../main/main_page.dart';
 import '../source_selection/source_selection_page.dart';
 
@@ -19,37 +18,7 @@ class AuthPage extends StatefulWidget {
   State<AuthPage> createState() => _AuthPageState();
 }
 
-class _AuthPageState extends State<AuthPage> with WidgetsBindingObserver {
-  @override
-  void initState() {
-    WidgetsBinding.instance?.addObserver(this);
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    WidgetsBinding.instance?.removeObserver(this);
-    super.dispose();
-  }
-
-  @override
-  void didChangePlatformBrightness() {
-    var brightness = Theme.of(context).brightness;
-
-    final themeCubit = context.read<ThemeCubit>();
-    final themeMode = themeCubit.state;
-
-    if (themeMode.index == 0) {
-      if (brightness == Brightness.light) {
-        themeCubit.changeTheme(1, save: false);
-      } else {
-        themeCubit.changeTheme(2, save: false);
-      }
-    }
-
-    super.didChangePlatformBrightness();
-  }
-
+class _AuthPageState extends State<AuthPage> {
   @override
   Widget build(BuildContext context) {
     final theme = AppTheme.of(context);

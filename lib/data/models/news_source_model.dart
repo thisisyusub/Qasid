@@ -3,25 +3,19 @@ import '../../domain/entities/news_source.dart';
 class NewsSourceModel extends NewsSource {
   const NewsSourceModel({
     required String title,
-    required String feedUrl,
     required String dateParser,
-    bool hasEnglishVersion = false,
-    bool hasRussianVersion = false,
+    required Map<String, dynamic> feedUrls,
   }) : super(
           title: title,
-          feedUrl: feedUrl,
+          feedUrls: feedUrls,
           dateParser: dateParser,
-          hasEnglishVersion: hasEnglishVersion,
-          hasRussianVersion: hasRussianVersion,
         );
 
   factory NewsSourceModel.fromJson(Map<String, dynamic> json) {
     return NewsSourceModel(
       title: json['title'],
-      feedUrl: json['feedUrl'],
+      feedUrls: json['feedUrls'],
       dateParser: json['dateParser'],
-      hasEnglishVersion: json['hasEnglishVersion'],
-      hasRussianVersion: json['hasRussianVersion'],
     );
   }
 
@@ -29,10 +23,8 @@ class NewsSourceModel extends NewsSource {
     final map = <String, dynamic>{};
 
     map['title'] = title;
-    map['feedUrl'] = feedUrl;
+    map['feedUrls'] = feedUrls;
     map['dateParser'] = dateParser;
-    map['hasEnglishVersion'] = hasEnglishVersion;
-    map['hasRussianVersion'] = hasRussianVersion;
 
     return map;
   }

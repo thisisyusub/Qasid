@@ -9,7 +9,7 @@ class ThemeCubit extends Cubit<ThemeMode> {
   ThemeCubit({
     required GetDefaultThemeMode getDefaultThemeMode,
     required this.changeThemeMode,
-  }) : super(ThemeMode.system) {
+  }) : super(ThemeMode.light) {
     final result = getDefaultThemeMode(NoParams());
 
     result.when(

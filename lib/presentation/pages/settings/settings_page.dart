@@ -38,13 +38,24 @@ class SettingsPage extends StatelessWidget {
               style: unweightedTitle,
             ),
           ),
-          ListTile(
-            onTap: () {},
-            title: Text(
-              localization.aboutApp,
-              style: unweightedTitle,
-            ),
-          ),
+          // Theme(
+          //   data: ThemeData(
+          //     dialogTheme: DialogTheme(
+          //       backgroundColor: appTheme.colors.primaryColor,
+          //     ),
+          //   ),
+          //   child: ListTile(
+          //     onTap: () {
+          //       showAboutDialog(
+          //         context: context,
+          //       );
+          //     },
+          //     title: Text(
+          //       localization.aboutApp,
+          //       style: unweightedTitle,
+          //     ),
+          //   ),
+          // ),
         ],
       ),
     );

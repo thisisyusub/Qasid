@@ -26,6 +26,9 @@ class NewsRepositoryImpl implements NewsRepository {
       /// first get users's selection that he/she want to get news from
       final sourcePrefs = preferencesDataSource.getSourcesPreferences();
 
+      var languageCode = preferencesDataSource.locale;
+      languageCode ??= 'az';
+
       final selectedSources = <NewsSource>[];
 
       /// filtering only selected sources by user
@@ -42,8 +45,13 @@ class NewsRepositoryImpl implements NewsRepository {
 
       for (var source in selectedSources) {
         try {
-          final xmlString =
-              await newsRemoteDataSource.fetchFeed(source.feedUrl);
+          final url = source.feedUrls[languageCode] as String?;
+
+          if (url == null) {
+            continue;
+          }
+
+          final xmlString = await newsRemoteDataSource.fetchFeed(url);
 
           final currentFeedNews = FeedParser.parse(xmlString);
           final dateFormatter = DateFormat(source.dateParser);

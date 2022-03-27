@@ -25,6 +25,8 @@ class LocalizationCubit extends Cubit<Locale> {
   final ChangeLocale changeLocale;
 
   void changeLanguage(String languageCode) async {
+    if (state == Locale(languageCode)) return;
+
     final result = await changeLocale(languageCode);
 
     if (result.isSuccess()) {
