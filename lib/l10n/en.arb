@@ -10,5 +10,7 @@
     "aboutApp": "About app",
     "azerbaijani": "Azerbaijani",
     "english": "English",
-    "russian": "Russian"
+    "russian": "Russian",
+    "dark": "Dark theme",
+    "light": "Light theme"
 }

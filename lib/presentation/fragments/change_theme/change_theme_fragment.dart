@@ -23,24 +23,17 @@ class ChangeThemeModeFragment {
         return Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            // _ThemeModeTile(
-            //   value: 0,
-            //   gruopValue: themeMode.index,
-            //   title: 'System',
-            //   appTheme: appTheme,
-            //   themeCubit: themeCubit,
-            // ),
             _ThemeModeTile(
               value: 1,
               gruopValue: themeMode.index,
-              title: 'Light',
+              title: localization.light,
               appTheme: appTheme,
               themeCubit: themeCubit,
             ),
             _ThemeModeTile(
               value: 2,
               gruopValue: themeMode.index,
-              title: 'Dark',
+              title: localization.dark,
               appTheme: appTheme,
               themeCubit: themeCubit,
             ),

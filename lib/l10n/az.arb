@@ -10,5 +10,7 @@
     "aboutApp": "Tətbiq haqqında",
     "azerbaijani": "Azərbaycan dili",
     "english": "İngilis dili",
-    "russian": "Rus dili"
+    "russian": "Rus dili",
+    "dark": "Tünd rejim",
+    "light": "Açıq rejim"
 }
