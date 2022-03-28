@@ -39,6 +39,7 @@ class NewsItem extends StatelessWidget {
           vertical: 16.0,
         ),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             if (news.title != null)
               Text(
@@ -46,7 +47,6 @@ class NewsItem extends StatelessWidget {
                 style: appTheme.typography.title.copyWith(
                   color: appTheme.colors.secondaryColor,
                 ),
-                textAlign: TextAlign.center,
               ),
             if (news.description != null && news.description!.isNotEmpty)
               const SizedBox(height: 5.0),
@@ -54,10 +54,10 @@ class NewsItem extends StatelessWidget {
               Text(
                 news.description ?? '',
                 style: appTheme.typography.subtitle.copyWith(
-                  color: appTheme.colors.secondaryColor,
+                  color: appTheme.colors.secondaryColor.withOpacity(0.7),
                   fontStyle: FontStyle.italic,
                 ),
-                textAlign: TextAlign.center,
+                textAlign: TextAlign.left,
               ),
             const SizedBox(height: 10),
             if (news.imageUrl != null)
@@ -81,7 +81,7 @@ class NewsItem extends StatelessWidget {
                   ),
                   maxLines: 3,
                   overflow: TextOverflow.ellipsis,
-                  textAlign: TextAlign.center,
+                  textAlign: TextAlign.left,
                 ),
               ),
           ],
