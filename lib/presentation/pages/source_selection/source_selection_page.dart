@@ -84,14 +84,16 @@ class _SubmitButton extends StatelessWidget {
             ),
           );
         },
-        child: Text(localization.goForward),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Text(localization.goForward),
+        ),
         style: ElevatedButton.styleFrom(
           primary: theme.colors.buttonColor,
           textStyle: theme.typography.title.copyWith(
             color: Colors.white,
           ),
           onPrimary: Colors.white,
-          fixedSize: const Size(200.0, 50.0),
         ),
       ),
     );
@@ -117,7 +119,8 @@ class _NewsSources extends StatelessWidget {
         shrinkWrap: true,
         itemBuilder: (_, i) {
           return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            padding:
+                const EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
             child: Row(
               children: [
                 Expanded(
@@ -129,11 +132,14 @@ class _NewsSources extends StatelessWidget {
                     ),
                   ),
                 ),
-                CupertinoSwitch(
-                  value: newsSources[i].selected,
-                  onChanged: (_) {
-                    sourceCubit.changeSelection(i);
-                  },
+                Transform.scale(
+                  scale: 1.2,
+                  child: CupertinoSwitch(
+                    value: newsSources[i].selected,
+                    onChanged: (_) {
+                      sourceCubit.changeSelection(i);
+                    },
+                  ),
                 ),
               ],
             ),

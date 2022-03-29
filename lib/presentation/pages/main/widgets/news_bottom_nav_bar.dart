@@ -26,6 +26,7 @@ class _NewsBottomNavBarState extends State<NewsBottomNavBar> {
     return BottomNavyBar(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       backgroundColor: appTheme.colors.primaryColor,
+      containerHeight: MediaQuery.of(context).size.height * 0.07,
       showElevation: true,
       selectedIndex: _index,
       onItemSelected: (index) {
@@ -61,10 +62,13 @@ class _NewsBottomNavBarState extends State<NewsBottomNavBar> {
       icon: Icon(
         icon,
       ),
-      title: Text(
-        title,
-        style: appTheme.typography.subtitle.copyWith(
-          color: appTheme.colors.secondaryColor,
+      title: FittedBox(
+        child: Text(
+          title,
+          style: appTheme.typography.subtitle.copyWith(
+            color: appTheme.colors.secondaryColor,
+            fontWeight: FontWeight.normal,
+          ),
         ),
       ),
       textAlign: TextAlign.center,
