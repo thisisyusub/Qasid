@@ -44,12 +44,9 @@ class _NewsPageState extends State<NewsPage>
             slivers: [
               SliverAppBar(
                 centerTitle: true,
-                backgroundColor: appTheme.colors.primaryColor,
                 title: Text(
                   'Qasid',
-                  style: appTheme.typography.heading.copyWith(
-                    color: appTheme.colors.secondaryColor,
-                  ),
+                  style: appTheme.typography.heading,
                 ),
                 floating: true,
               ),
@@ -66,6 +63,7 @@ class _NewsPageState extends State<NewsPage>
                           NewsItem(
                             news: allNewsState.data![index],
                           ),
+                          const SizedBox(height: 16),
                           Divider(
                             height: 0,
                             color: appTheme.colors.accentColor,

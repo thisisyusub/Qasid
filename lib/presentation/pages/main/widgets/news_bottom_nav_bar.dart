@@ -1,5 +1,6 @@
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:theme/theme.dart';
 
@@ -22,6 +23,27 @@ class _NewsBottomNavBarState extends State<NewsBottomNavBar> {
   Widget build(BuildContext context) {
     final localization = AppLocalizations.of(context)!;
     final appTheme = AppTheme.of(context);
+
+    return NavigationBar(
+      labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
+      selectedIndex: _index,
+      onDestinationSelected: (newIndex) {
+        setState(() {
+          _index = newIndex;
+          widget.onChange?.call(_index);
+        });
+      },
+      destinations: [
+        NavigationDestination(
+          icon: const Icon(CupertinoIcons.news),
+          label: localization.news,
+        ),
+        NavigationDestination(
+          icon: const Icon(CupertinoIcons.settings),
+          label: localization.settings,
+        ),
+      ],
+    );
 
     return BottomNavyBar(
       mainAxisAlignment: MainAxisAlignment.spaceAround,

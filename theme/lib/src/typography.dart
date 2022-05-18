@@ -16,11 +16,12 @@ class AppTypographyData extends Equatable {
           fontWeight: FontWeight.w500,
         ),
         title: TextStyle(
-          fontSize: 14.w,
-          fontWeight: FontWeight.w500,
+          fontSize: 18.w,
+          fontWeight: FontWeight.w700,
         ),
         subtitle: TextStyle(
           fontSize: 12.w,
+          fontWeight: FontWeight.w400,
         ),
       );
 

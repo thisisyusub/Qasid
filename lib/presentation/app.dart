@@ -63,9 +63,14 @@ class MyApp extends StatelessWidget {
                           AppLocalizations.localizationsDelegates,
                       supportedLocales: AppLocalizations.supportedLocales,
                       theme: ThemeData(
-                        primaryColor: appTheme.colors.primaryColor,
-                        primaryColorDark: appTheme.colors.secondaryColor,
-                        scaffoldBackgroundColor: appTheme.colors.primaryColor,
+                        useMaterial3: true,
+                        colorSchemeSeed: Color(0xFF272932),
+                        brightness: Brightness.light,
+                      ),
+                      darkTheme: ThemeData(
+                        useMaterial3: true,
+                        colorSchemeSeed: Color(0xFF272932),
+                        brightness: Brightness.dark,
                       ),
                       builder: (context, child) {
                         return ScrollConfiguration(
