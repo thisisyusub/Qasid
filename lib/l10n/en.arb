@@ -12,5 +12,6 @@
     "english": "English",
     "russian": "Russian",
     "dark": "Dark theme",
-    "light": "Light theme"
+    "light": "Light theme",
+    "pleaseWait": "Please wait..."
 }

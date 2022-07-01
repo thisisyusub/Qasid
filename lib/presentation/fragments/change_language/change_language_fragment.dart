@@ -20,31 +20,36 @@ class ChangeLanguageFragment {
       context: context,
       backgroundColor: appTheme.colors.primaryColor,
       builder: (_) {
-        return Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            _LanguageTile(
-              value: 'az',
-              gruopValue: languagecode,
-              title: localization.azerbaijani,
-              appTheme: appTheme,
-              localizationCubit: localizationCubit,
-            ),
-            _LanguageTile(
-              value: 'en',
-              gruopValue: languagecode,
-              title: localization.english,
-              appTheme: appTheme,
-              localizationCubit: localizationCubit,
-            ),
-            _LanguageTile(
-              value: 'ru',
-              gruopValue: languagecode,
-              title: localization.russian,
-              appTheme: appTheme,
-              localizationCubit: localizationCubit,
-            ),
-          ],
+        return Padding(
+          padding: EdgeInsets.only(
+            bottom: MediaQuery.of(context).viewPadding.bottom,
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              _LanguageTile(
+                value: 'az',
+                gruopValue: languagecode,
+                title: localization.azerbaijani,
+                appTheme: appTheme,
+                localizationCubit: localizationCubit,
+              ),
+              _LanguageTile(
+                value: 'en',
+                gruopValue: languagecode,
+                title: localization.english,
+                appTheme: appTheme,
+                localizationCubit: localizationCubit,
+              ),
+              _LanguageTile(
+                value: 'ru',
+                gruopValue: languagecode,
+                title: localization.russian,
+                appTheme: appTheme,
+                localizationCubit: localizationCubit,
+              ),
+            ],
+          ),
         );
       },
     );
@@ -82,7 +87,7 @@ class _LanguageTile extends StatelessWidget {
         groupValue: gruopValue,
         title: Text(
           title,
-          style: appTheme.typography.title.copyWith(
+          style: appTheme.typography.heading.copyWith(
             color: appTheme.colors.secondaryColor,
           ),
         ),

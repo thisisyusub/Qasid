@@ -6,16 +6,19 @@ import '../../core/utils/feed_parser.dart';
 import '../../domain/entities/news.dart';
 import '../../domain/entities/news_source.dart';
 import '../../domain/repositories/news_repository.dart';
+import '../data_sources/local/news_source_data_source.dart';
 import '../data_sources/local/preferences_data_source.dart';
 import '../data_sources/remote/news_remote_data_source.dart';
 
 class NewsRepositoryImpl implements NewsRepository {
   NewsRepositoryImpl({
     required this.preferencesDataSource,
+    required this.newsSourceDataSource,
     required this.newsRemoteDataSource,
   });
 
   final PreferencesDataSource preferencesDataSource;
+  final NewsSourceDataSource newsSourceDataSource;
   final NewsRemoteDataSource newsRemoteDataSource;
 
   @override
@@ -24,19 +27,12 @@ class NewsRepositoryImpl implements NewsRepository {
       final allNews = <News>[];
 
       /// first get users's selection that he/she want to get news from
-      final sourcePrefs = preferencesDataSource.getSourcesPreferences();
 
       var languageCode = preferencesDataSource.locale;
       languageCode ??= 'az';
 
       final selectedSources = <NewsSource>[];
-
-      /// filtering only selected sources by user
-      for (var source in sourcePrefs) {
-        if (source.selected) {
-          selectedSources.add(source.value);
-        }
-      }
+      selectedSources.addAll(newsSourceDataSource.getNewsSources());
 
       /// only todays news will be shown in the list
       /// that is why today's date needed to filter

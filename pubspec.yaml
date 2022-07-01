@@ -10,6 +10,7 @@ environment:
 
 dependency_overrides:
   collection: ^1.15.0
+  xml: ^5.4.1
 
 dependencies:
   bottom_navy_bar: ^6.0.0
@@ -34,6 +35,8 @@ dependencies:
   share_plus: ^4.0.3
   theme:
     path: ./theme
+  flutter_svg: ^1.1.1
+  loading_animation_widget: ^1.2.0+2
 
 dev_dependencies:
   flutter_lints: ^1.0.0

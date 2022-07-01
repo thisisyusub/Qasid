@@ -3,7 +3,7 @@
     "qasid": "Qasid",
     "selectSoureTitle": "Əldə etmək istədiyiniz xəbərlərin\nmənbələrini seçin",
     "goForward": "Davam et",
-    "news": "Xəbərlər",
+    "news": "Xəbər lenti",
     "settings": "Ayarlar",
     "changeLanguage": "Dili dəyiş",
     "changeTheme": "Rejimi dəyiş",
@@ -12,5 +12,7 @@
     "english": "İngilis dili",
     "russian": "Rus dili",
     "dark": "Tünd rejim",
-    "light": "Açıq rejim"
+    "light": "Açıq rejim",
+    "channels": "Kanallar",
+    "pleaseWait": "Zəhmət olmasa, gözləyin..."
 }

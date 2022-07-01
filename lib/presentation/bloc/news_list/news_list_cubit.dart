@@ -15,6 +15,7 @@ class NewsListCubit extends Cubit<DataState<List<News>, Unit>> {
 
   void fetchAllNews() async {
     emit(state.copyWith(isInProgress: true));
+
     final result = await getNewsList(NoParams());
 
     result.when(

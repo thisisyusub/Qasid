@@ -3,8 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:theme/theme.dart';
 
 import '../news/news_page.dart';
-import '../settings/settings_page.dart';
-import 'widgets/news_bottom_nav_bar.dart';
+import 'widgets/custom_app_bar.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -25,23 +24,21 @@ class _MainPageState extends State<MainPage> {
             AppTheme.of(context).colors.statusBarIconBrightness,
       ),
       child: Scaffold(
-        body: PageView(
-          controller: _pageController,
-          allowImplicitScrolling: false,
-          physics: const NeverScrollableScrollPhysics(),
-          children: const [
-            NewsPage(),
-            SettingsPage(),
+        body: Column(
+          children: [
+            const CustomAppBar(),
+            Expanded(
+              child: PageView(
+                controller: _pageController,
+                allowImplicitScrolling: false,
+                physics: const NeverScrollableScrollPhysics(),
+                children: const [
+                  NewsPage(),
+                  SizedBox(),
+                ],
+              ),
+            ),
           ],
-        ),
-        bottomNavigationBar: NewsBottomNavBar(
-          onChange: (index) {
-            _pageController.animateToPage(
-              index,
-              duration: const Duration(milliseconds: 700),
-              curve: Curves.fastOutSlowIn,
-            );
-          },
         ),
       ),
     );

@@ -1,10 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:html/parser.dart';
-import 'package:responsiveness/responsiveness.dart';
 import 'package:theme/theme.dart';
 
 import '../../../../domain/entities/news.dart';
+import '../../../bloc/theme/theme_cubit.dart';
 import '../../news_detail/news_detail_page.dart';
 
 class NewsItem extends StatelessWidget {
@@ -18,6 +19,11 @@ class NewsItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appTheme = AppTheme.of(context);
+    final themeMode = context.read<ThemeCubit>().state;
+
+    final subtitleColor = themeMode == ThemeMode.light
+        ? appTheme.colors.accentColor
+        : Colors.white;
 
     return InkWell(
       onTap: () {
@@ -42,6 +48,7 @@ class NewsItem extends StatelessWidget {
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             if (news.imageUrl != null)
               ClipRRect(
@@ -65,7 +72,7 @@ class NewsItem extends StatelessWidget {
               Text(
                 news.description ?? '',
                 style: appTheme.typography.subtitle.copyWith(
-                  fontStyle: FontStyle.italic,
+                  color: subtitleColor,
                 ),
                 textAlign: TextAlign.left,
               ),
@@ -75,8 +82,8 @@ class NewsItem extends StatelessWidget {
                 if (news.source != null)
                   Text(
                     news.source ?? '',
-                    style: appTheme.typography.subtitle.copyWith(
-                      fontSize: 10.w,
+                    style: appTheme.typography.caption.copyWith(
+                      color: subtitleColor,
                     ),
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
@@ -84,77 +91,6 @@ class NewsItem extends StatelessWidget {
                   ),
               ],
             ),
-          ],
-        ),
-      ),
-    );
-
-    return InkWell(
-      onTap: () {
-        if (news.link != null) {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (_) {
-                return NewsDetailPage(
-                  title: news.source ?? '',
-                  url: news.link!,
-                );
-              },
-            ),
-          );
-        }
-      },
-      child: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 16.0,
-          vertical: 16.0,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            if (news.title != null)
-              Text(
-                parse(news.title!).body?.text ?? '',
-                style: appTheme.typography.title.copyWith(
-                  color: appTheme.colors.secondaryColor,
-                ),
-              ),
-            if (news.description != null && news.description!.isNotEmpty)
-              const SizedBox(height: 5.0),
-            if (news.description != null && news.description!.isNotEmpty)
-              Text(
-                news.description ?? '',
-                style: appTheme.typography.subtitle.copyWith(
-                  color: appTheme.colors.secondaryColor.withOpacity(0.7),
-                  fontStyle: FontStyle.italic,
-                ),
-                textAlign: TextAlign.left,
-              ),
-            const SizedBox(height: 10),
-            if (news.imageUrl != null)
-              ClipRRect(
-                borderRadius: BorderRadius.circular(8.0),
-                child: CachedNetworkImage(
-                  imageUrl: news.imageUrl!,
-                  errorWidget: (_, __, ___) {
-                    return const SizedBox.shrink();
-                  },
-                ),
-              ),
-            if (news.source != null)
-              Padding(
-                padding: const EdgeInsets.only(top: 8.0),
-                child: Text(
-                  news.source ?? '',
-                  style: appTheme.typography.subtitle.copyWith(
-                    color: appTheme.colors.secondaryColor,
-                    fontStyle: FontStyle.italic,
-                  ),
-                  maxLines: 3,
-                  overflow: TextOverflow.ellipsis,
-                  textAlign: TextAlign.left,
-                ),
-              ),
           ],
         ),
       ),

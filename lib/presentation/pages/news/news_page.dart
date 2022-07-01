@@ -28,6 +28,34 @@ class _NewsPageState extends State<NewsPage>
     final allNewsState = context.watch<NewsListCubit>().state;
     final appTheme = AppTheme.of(context);
 
+    late final Widget child;
+
+    if (allNewsState.isInProgress) {
+      child = const Loading();
+    } else if (allNewsState.isSuccess) {
+      child = ListView.builder(
+        physics: const ClampingScrollPhysics(),
+        padding: EdgeInsets.zero,
+        itemBuilder: (context, index) {
+          return Column(
+            children: [
+              NewsItem(
+                news: allNewsState.data![index],
+              ),
+              const SizedBox(height: 16),
+              Divider(
+                height: 0,
+                color: appTheme.colors.accentColor,
+              ),
+            ],
+          );
+        },
+        itemCount: allNewsState.data!.length,
+      );
+    } else {
+      child = SizedBox();
+    }
+
     return BlocListener<LocalizationCubit, Locale>(
       listener: (context, state) {
         context.read<NewsListCubit>().fetchAllNews();
@@ -39,43 +67,7 @@ class _NewsPageState extends State<NewsPage>
           onRefresh: () async {
             context.read<NewsListCubit>().fetchAllNews();
           },
-          child: CustomScrollView(
-            physics: const BouncingScrollPhysics(),
-            slivers: [
-              SliverAppBar(
-                centerTitle: true,
-                title: Text(
-                  'Qasid',
-                  style: appTheme.typography.heading,
-                ),
-                floating: true,
-              ),
-              if (allNewsState.isInProgress)
-                const SliverFillRemaining(
-                  child: Loading(),
-                ),
-              if (allNewsState.isSuccess)
-                SliverList(
-                  delegate: SliverChildBuilderDelegate(
-                    (context, index) {
-                      return Column(
-                        children: [
-                          NewsItem(
-                            news: allNewsState.data![index],
-                          ),
-                          const SizedBox(height: 16),
-                          Divider(
-                            height: 0,
-                            color: appTheme.colors.accentColor,
-                          ),
-                        ],
-                      );
-                    },
-                    childCount: allNewsState.data!.length,
-                  ),
-                ),
-            ],
-          ),
+          child: child,
         ),
       ),
     );

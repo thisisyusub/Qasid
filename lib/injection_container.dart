@@ -17,28 +17,14 @@ import 'domain/use_cases/get_default_locale.dart';
 import 'domain/use_cases/get_default_theme_mode.dart';
 import 'domain/use_cases/get_news_list.dart';
 import 'domain/use_cases/get_news_sources.dart';
-import 'domain/use_cases/get_preferences_of_sources.dart';
-import 'domain/use_cases/is_sources_selected.dart';
-import 'domain/use_cases/persist_sources_selection.dart';
-import 'presentation/bloc/auth/auth_cubit.dart';
 import 'presentation/bloc/localization/localization_cubit.dart';
 import 'presentation/bloc/news_list/news_list_cubit.dart';
-import 'presentation/bloc/news_source/news_source_cubit.dart';
 import 'presentation/bloc/theme/theme_cubit.dart';
 
 final di = GetIt.instance;
 
 Future<void> init() async {
   //* Blocs
-  di.registerFactory(
-    () => NewsSourceCubit(
-      getNewsSources: di(),
-      persistSourcesSelection: di(),
-    ),
-  );
-
-  di.registerFactory(() => AuthCubit(di()));
-
   di.registerFactory(() => NewsListCubit(getNewsList: di()));
 
   di.registerFactory(
@@ -57,9 +43,6 @@ Future<void> init() async {
 
   //* Use cases
   di.registerLazySingleton(() => GetNewsSources(di()));
-  di.registerLazySingleton(() => PersistSourcesSelection(di()));
-  di.registerLazySingleton(() => GetPreferencesOfSources(di()));
-  di.registerLazySingleton(() => IsSourcesSelected(di()));
   di.registerLazySingleton(() => GetNewsList(di()));
   di.registerLazySingleton(() => GetDefaultLocale(di()));
   di.registerLazySingleton(() => ChangeLocale(di()));
@@ -78,6 +61,7 @@ Future<void> init() async {
   di.registerLazySingleton<NewsRepository>(
     () => NewsRepositoryImpl(
       newsRemoteDataSource: di(),
+      newsSourceDataSource: di(),
       preferencesDataSource: di(),
     ),
   );
