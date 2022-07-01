@@ -13,5 +13,6 @@
     "russian": "Russian",
     "dark": "Dark theme",
     "light": "Light theme",
-    "pleaseWait": "Please wait..."
+    "pleaseWait": "Please wait...",
+    "errorOccured": "An error occured!"
 }

@@ -14,5 +14,6 @@
     "dark": "Tünd rejim",
     "light": "Açıq rejim",
     "channels": "Kanallar",
-    "pleaseWait": "Zəhmət olmasa, gözləyin..."
+    "pleaseWait": "Zəhmət olmasa, gözləyin...",
+    "errorOccured": "Xəta baş verdi!"
 }

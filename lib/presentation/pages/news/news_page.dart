@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:theme/theme.dart';
 
 import '../../../core/bloc/data_state.dart';
@@ -53,7 +54,12 @@ class _NewsPageState extends State<NewsPage>
         itemCount: allNewsState.data!.length,
       );
     } else {
-      child = SizedBox();
+      child = Center(
+        child: Text(
+          AppLocalizations.of(context)!.errorOccured,
+          style: appTheme.typography.heading,
+        ),
+      );
     }
 
     return BlocListener<LocalizationCubit, Locale>(

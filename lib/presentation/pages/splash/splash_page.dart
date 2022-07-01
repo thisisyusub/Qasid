@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get_it/get_it.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:theme/theme.dart';
 
 import '../../../core/constants/assets.dart';
 import '../../bloc/news_list/news_list_cubit.dart';
@@ -74,6 +75,8 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    final typography = AppTheme.of(context).typography;
+
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -88,12 +91,18 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
           const SizedBox(height: 20),
           FadeTransition(
             opacity: _firstPartAnimation,
-            child: Text(_firstText),
+            child: Text(
+              _firstText,
+              style: typography.heading,
+            ),
           ),
           const SizedBox(height: 5),
           FadeTransition(
             opacity: _secondPartAnimation,
-            child: Text(_secondText),
+            child: Text(
+              _secondText,
+              style: typography.heading,
+            ),
           ),
         ],
       ),
