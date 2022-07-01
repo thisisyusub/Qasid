@@ -37,6 +37,7 @@ dependencies:
     path: ./theme
   flutter_svg: ^1.1.1
   loading_animation_widget: ^1.2.0+2
+  just_audio: ^0.9.27
 
 dev_dependencies:
   flutter_lints: ^1.0.0

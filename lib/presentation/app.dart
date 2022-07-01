@@ -2,16 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:get_it/get_it.dart';
 import 'package:responsiveness/responsiveness.dart';
 import 'package:theme/theme.dart';
 
 import '../core/utils/app_scroll_behaviour.dart';
 import '../injection_container.dart';
 import 'bloc/localization/localization_cubit.dart';
-import 'bloc/news_list/news_list_cubit.dart';
 import 'bloc/theme/theme_cubit.dart';
-import 'pages/main/main_page.dart';
+import 'pages/splash/splash_page.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -86,15 +84,7 @@ class MyApp extends StatelessWidget {
                             child: child!,
                           );
                         },
-                        home: MultiBlocProvider(
-                          providers: [
-                            BlocProvider(
-                              create: (_) =>
-                                  GetIt.I.get<NewsListCubit>()..fetchAllNews(),
-                            ),
-                          ],
-                          child: const MainPage(),
-                        ),
+                        home: const SplashPage(),
                       ),
                     );
                   },
