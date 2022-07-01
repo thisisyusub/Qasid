@@ -50,15 +50,16 @@ class MyApp extends StatelessWidget {
                     final locale = context.watch<LocalizationCubit>().state;
                     final themeMode = context.watch<ThemeCubit>().state;
 
-                    return AnnotatedRegion<SystemUiOverlayStyle>(
+                    return AnnotatedRegion(
                       value: SystemUiOverlayStyle(
-                        statusBarBrightness: themeMode == ThemeMode.dark
-                            ? Brightness.dark
-                            : Brightness.light,
-                        statusBarIconBrightness: themeMode == ThemeMode.dark
-                            ? Brightness.light
-                            : Brightness.dark,
-                        systemStatusBarContrastEnforced: true,
+                        statusBarColor:
+                            AppTheme.of(context).colors.primaryColor,
+                        statusBarIconBrightness:
+                            AppTheme.of(context).colors.statusBarIconBrightness,
+                        systemNavigationBarColor:
+                            AppTheme.of(context).colors.primaryColor,
+                        systemNavigationBarIconBrightness:
+                            AppTheme.of(context).colors.statusBarIconBrightness,
                       ),
                       child: MaterialApp(
                         title: 'Qasid',
@@ -72,6 +73,7 @@ class MyApp extends StatelessWidget {
                           useMaterial3: true,
                           colorSchemeSeed: appColors.primaryColor,
                           brightness: Brightness.light,
+                          scaffoldBackgroundColor: Colors.white,
                         ),
                         darkTheme: ThemeData(
                           useMaterial3: true,
